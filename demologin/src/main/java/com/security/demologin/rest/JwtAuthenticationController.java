@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.security.demologin.config.JwtTokenUtil;
 import com.security.demologin.model.JwtRequest;
 import com.security.demologin.model.JwtResponse;
+import com.security.demologin.model.UserDTO;
 import com.security.demologin.service.JwtUserDetailsService;
 
 @RestController
@@ -47,6 +48,11 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
