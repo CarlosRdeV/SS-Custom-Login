@@ -1,4 +1,4 @@
-package com.security.demologin.model;
+package com.security.demologin.entity;
 
 import java.io.Serializable;
 

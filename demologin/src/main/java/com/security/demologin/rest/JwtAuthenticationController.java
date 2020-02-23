@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.security.demologin.config.JwtTokenUtil;
-import com.security.demologin.model.JwtRequest;
-import com.security.demologin.model.JwtResponse;
-import com.security.demologin.model.UserDTO;
+import com.security.demologin.entity.JwtRequest;
+import com.security.demologin.entity.JwtResponse;
+import com.security.demologin.entity.User;
 import com.security.demologin.service.JwtUserDetailsService;
 
 @RestController
@@ -51,7 +51,7 @@ public class JwtAuthenticationController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
